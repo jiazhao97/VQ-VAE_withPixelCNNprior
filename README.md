@@ -1,5 +1,5 @@
-# VQ-VAE_withPixelCNNprior
-Implementation of Vector Quantised VAE (VQ-VAE) with PixelCNN prior in Tensorflow.
+# VQ-VAE with PixelCNN prior
+- We train the Vector Quantised
 
 ## Results
 <table align='center'>
