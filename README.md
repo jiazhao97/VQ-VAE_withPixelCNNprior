@@ -7,6 +7,7 @@
 ## Acknowledgement
 - VQ-VAE is originally mentioned in the paper [Neural Discrete Representation Learning](https://arxiv.org/pdf/1711.00937.pdf).
 - PixelCNN is proposed in the papers [Pixel Recurrent Neural Networks](https://arxiv.org/abs/1601.06759) and [Conditional Image Generation with PixelCNN Decoders](https://arxiv.org/abs/1606.05328).
+- Implementation of VQ-VAE (without priors) is based on [the official codes](https://github.com/deepmind/sonnet/blob/master/sonnet/examples/vqvae_example.ipynb).
 
 ## Results
 <table align='center'>
