@@ -5,7 +5,8 @@
 - Use PixelCNN to learn the priors on the discrete latents for image sampling.
 
 ## Acknowledgement
-- VQ-VAE is proposed in the paper [Neural Discrete representation learning](https://arxiv.org/pdf/1711.00937.pdf).
+- VQ-VAE is originally mentioned in the paper [Neural Discrete Representation Learning](https://arxiv.org/pdf/1711.00937.pdf).
+- PixelCNN is proposed in the papers [Pixel Recurrent Neural Networks](https://arxiv.org/abs/1601.06759) and [Conditional Image Generation with PixelCNN Decoders](https://arxiv.org/abs/1606.05328).
 
 ## Results
 <table align='center'>
