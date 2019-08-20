@@ -12,10 +12,10 @@ Implementation of Vector Quantised VAE (VQ-VAE) with PixelCNN prior in Tensorflo
 </tr>
 <tr align='center'>
 <td> MNIST </td>
-<td><img src = 'Figures/Test_data_mnist.png' height = '150px'>
-<td><img src = 'Figures/Test_recon_mnist.png' height = '150px'>
-<td><img src = 'Figures/Sample_random_mnist.png' height = '150px'>
-<td><img src = 'Figures/Sample_pixelcnn_mnist.png' height = '150px'>
+<td><img src = 'Figures/Test_data_mnist.png' height = '130px'>
+<td><img src = 'Figures/Test_recon_mnist.png' height = '130px'>
+<td><img src = 'Figures/Sample_random_mnist.png' height = '130px'>
+<td><img src = 'Figures/Sample_pixelcnn_mnist.png' height = '130px'>
 </tr>
 <tr align='center'>
 <td> Fashion-MNIST </td>
