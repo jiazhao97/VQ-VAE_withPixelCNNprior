@@ -12,7 +12,7 @@ Note: Different from the official codes, the implementation here does not rely o
 - Implementation of PixelCNN is based on [this repo](https://github.com/anantzoid/Conditional-PixelCNN-decoder) with little modify.
 
 ## Usage
-- Run MNISI: `vqvae1_withPixelCNNprior_mnist.py`
+- Run MNIST: `vqvae1_withPixelCNNprior_mnist.py`
 - Run cifar-10: `vqvae1_withPixelCNNprior_cifar10.py`
 
 ## Results
