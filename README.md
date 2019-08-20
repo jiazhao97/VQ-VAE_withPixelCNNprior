@@ -6,9 +6,9 @@ Implementation of Vector Quantised VAE (VQ-VAE) with PixelCNN prior in Tensorflo
 <tr align='center'>
 <td> </td>
 <td> Testing data </td>
-<td> Reconstruction </td>
+<td> Reconstruction based on VQ-VAE </td>
 <td> Random samples </td>
-<td> Samples using PixelCNN </td>
+<td> Samples based on PixelCNN prior </td>
 </tr>
 <tr align='center'>
 <td> MNIST </td>
