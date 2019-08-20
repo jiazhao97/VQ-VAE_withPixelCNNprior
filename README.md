@@ -11,6 +11,13 @@
 Note: Different from the official codes, the implementation here does not rely on the [Sonnet library](https://github.com/deepmind/sonnet).
 - Implementation of PixelCNN is based on [this repo](https://github.com/anantzoid/Conditional-PixelCNN-decoder) with little modify.
 
+## Usage
+- Run MNISI: 
+```bash
+pip install -r requirements.txt
+python main.py
+```
+
 ## Results
 <table align='center'>
 <tr align='center'>
