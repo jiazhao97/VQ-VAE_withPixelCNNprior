@@ -1,4 +1,6 @@
 # VQ-VAE with PixelCNN prior
+
+## Workflow
 - Train the Vector Quantised Variational AutoEncoder (VQ-VAE) for discrete representation and reconstruction.
 - Use PixelCNN to learn the priors on the discrete latents for image sampling. 
 
