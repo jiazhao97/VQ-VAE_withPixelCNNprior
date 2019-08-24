@@ -10,6 +10,7 @@
 - Implementation of VQ-VAE (without priors) is based on [the official codes from Google DeepMind](https://github.com/deepmind/sonnet/blob/master/sonnet/examples/vqvae_example.ipynb). 
 Note: Different from the official codes, the implementation here does not rely on the [Sonnet library](https://github.com/deepmind/sonnet).
 - Implementation of PixelCNN is based on [this repo](https://github.com/anantzoid/Conditional-PixelCNN-decoder) with little modify.
+- We provide the slides which may be of help for readers to gain better understanding on PixelCNN and VQ-VAE. Some images used in the slides are borrowed from papers and websites, so the slides can only be used for learning purpose.
 
 ## Usage
 - Run MNIST: `vqvae1_withPixelCNNprior_mnist.py`
