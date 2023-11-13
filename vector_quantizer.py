@@ -7,12 +7,16 @@ def vector_quantizer(inputs, embedding_dim, num_embeddings, commitment_cost, ran
 		shape_of_inputs=[batch_size, ?, ?, embedding_dim]
 	'''
 	# Assert last dimension of inputs is same as embedding_dim
-	assert_dim = tf.assert_equal(tf.shape(inputs)[-1], embedding_dim)
-	with tf.control_dependencies([assert_dim]):
-		flat_inputs = tf.reshape(inputs, [-1, embedding_dim])
 	
-	with tf.variable_scope('vq', reuse=tf.AUTO_REUSE):
-		emb_vq = tf.get_variable(name='embedding_vq', shape=[embedding_dim, num_embeddings], initializer=tf.uniform_unit_scaling_initializer())
+	
+	# assert_dim = tf.debugging.assert_equal(tf.shape(inputs)[-1], embedding_dim)
+	# with tf.control_dependencies([assert_dim]):
+	# 	flat_inputs = tf.reshape(inputs, [-1, embedding_dim])
+	flat_inputs = tf.reshape(inputs, [-1, embedding_dim])
+
+
+	with tf.compat.v1.variable_scope('vq', reuse=tf.compat.v1.AUTO_REUSE):
+		emb_vq = tf.compat.v1.get_variable(name='embedding_vq', shape=[embedding_dim, num_embeddings], initializer=tf.compat.v1.uniform_unit_scaling_initializer())
 
 	if (only_lookup == False):
 		distances = tf.reduce_sum(flat_inputs**2, 1, keepdims=True) - 2*tf.matmul(flat_inputs, emb_vq) + tf.reduce_sum(emb_vq**2, 0, keepdims=True)
@@ -38,7 +42,7 @@ def vector_quantizer(inputs, embedding_dim, num_embeddings, commitment_cost, ran
 	# 	This step is used to copy the gradient from inputs to quantized.
 
 	avg_probs = tf.reduce_mean(encodings, 0)
-	perplexity = tf.exp(- tf.reduce_sum(avg_probs * tf.log(avg_probs+1e-10)))
+	perplexity = tf.exp(- tf.reduce_sum(avg_probs * tf.math.log(avg_probs+1e-10)))
 	# The perplexity is the exponentiation of the entropy, 
 	# indicating how many codes are 'active' on average.
 	# We hope the perplexity is larger.
@@ -50,16 +54,16 @@ def vector_quantizer(inputs, embedding_dim, num_embeddings, commitment_cost, ran
 				'encodings': encodings,
 				'encoding_indices': encoding_indices}
 	else:
-		rand_encoding_indices = tf.random_uniform(tf.shape(encoding_indices), minval=0, maxval=1)
+		rand_encoding_indices = tf.random.uniform(tf.shape(encoding_indices), minval=0, maxval=1)
 		rand_encoding_indices = tf.floor(rand_encoding_indices * num_embeddings)
 		rand_encoding_indices = tf.clip_by_value(rand_encoding_indices, 0, num_embeddings-1)
 		rand_encoding_indices = tf.cast(rand_encoding_indices, tf.int32)
 
 		rand_quantized = tf.nn.embedding_lookup(tf.transpose(emb_vq), rand_encoding_indices) 
 
-		near_encoding_indices = tf.cast(encoding_indices, tf.float32) + tf.random_uniform(tf.shape(encoding_indices), minval=-1, maxval=1)
+		near_encoding_indices = tf.cast(encoding_indices, tf.float32) + tf.random.uniform(tf.shape(encoding_indices), minval=-1, maxval=1)
 		near_encoding_indices = tf.clip_by_value(near_encoding_indices, 0, num_embeddings-1)
-		near_encoding_indices = tf.rint(near_encoding_indices)
+		near_encoding_indices = tf.round(near_encoding_indices)
 		near_encoding_indices = tf.cast(near_encoding_indices, tf.int32)
 		
 		near_quantized = tf.nn.embedding_lookup(tf.transpose(emb_vq), near_encoding_indices)
@@ -70,7 +74,7 @@ def vector_quantizer(inputs, embedding_dim, num_embeddings, commitment_cost, ran
 				'encodings': encodings,
 				'encoding_indices': encoding_indices,
 				'rand_quantized': rand_quantized,
-				'near_quantized': near_quantized}	
+				'near_quantized': near_quantized}
 
 
 # import tensorflow as tf
